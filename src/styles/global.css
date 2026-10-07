@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2");
+}
+
+@theme {
+  --font-sans: "Inter Variable", sans-serif;
+}
+
+:root {
+  --paper: #f5f4ef;
+  --ink: #292c28;
+  --secondary: #595e56;
+  --rule: #d5d7ce;
+  --link: #8d412c;
+  --link-hover: #58291b;
+}
+
+html { scroll-padding-top: 1.5rem; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: #e5d8cc; color: var(--ink); }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-weight: 600; line-height: 1.3; }
+h1 { font-size: 2.375rem; letter-spacing: -0.025em; }
+h2 { font-size: 1.5rem; letter-spacing: -0.015em; }
+h3 { font-size: 1.125rem; }
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 120ms ease;
+}
+a:hover { color: var(--link-hover); }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+main:focus { outline: none; }
+.page-width { width: min(1000px, calc(100% - 80px)); margin-inline: auto; }
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.6rem 0.9rem;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: translateY(0); }
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding-block: 2rem;
+  font-size: 0.9375rem;
+}
+.site-name { color: var(--ink); font-weight: 500; text-decoration: none; }
+.site-header nav { gap: 1.6rem; }
+.introduction { max-width: 730px; padding-top: 1.75rem; margin-bottom: 3.5rem; }
+.intro-copy { margin-top: 1.25rem; font-size: 1.1875rem; line-height: 1.75; }
+.intro-consulting { margin-top: 1.25rem; max-width: 670px; }
+.selected-work h2 { margin-bottom: 0.9rem; }
+.work-coming-soon { max-width: 720px; }
+.work-coming-soon p + p { margin-top: 1rem; }
+.work-disclosure { max-width: 700px; color: var(--secondary); font-size: 0.9375rem; margin-bottom: 1.5rem; }
+.work-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: 3rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+.work-entry h3 { max-width: 230px; }
+.work-note > p:first-child { max-width: 640px; }
+.work-area { color: var(--secondary); font-size: 0.875rem; margin-top: 0.75rem; }
+.draft-note { color: var(--secondary); font-size: 0.875rem; margin-top: 0.65rem; font-style: italic; }
+.work-links { display: flex; flex-wrap: wrap; gap: 1.5rem; list-style: none; margin: 0.75rem 0 0; padding: 0; }
+.personal-and-practice {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 5rem;
+  margin-top: 3.5rem;
+}
+.about h2, .consulting h2 { margin-bottom: 1.1rem; }
+.about p + p { margin-top: 1rem; }
+.consulting h2 { font-size: 1.25rem; }
+.consulting dl { margin: 0; }
+.consulting dl > div + div { margin-top: 1.15rem; }
+.consulting dt { font-weight: 550; }
+.consulting dd { margin: 0.3rem 0 0; color: var(--secondary); font-size: 0.9375rem; }
+.contact { margin-block: 3.5rem; max-width: 720px; }
+.contact h2 { font-size: 1.25rem; margin-bottom: 0.8rem; }
+.site-footer { gap: 1rem; border-top: 1px solid var(--rule); padding-block: 1.25rem 2rem; font-size: 0.875rem; color: var(--secondary); }
+
+@media (max-width: 900px) {
+  .work-entry { grid-template-columns: minmax(0, 215px) minmax(0, 1fr); gap: 2rem; }
+  .personal-and-practice { gap: 2.75rem; }
+}
+
+@media (max-width: 650px) {
+  .page-width { width: calc(100% - 40px); }
+  .site-header { flex-direction: column; gap: 0.65rem; padding-block: 1.25rem; }
+  .site-header nav { gap: 1.4rem; }
+  .site-header nav a { padding-block: 0.25rem; }
+  h1 { font-size: 2rem; }
+  .introduction { padding-top: 1.25rem; margin-bottom: 2.5rem; }
+  .intro-copy { font-size: 1.0625rem; }
+  .intro-copy, .intro-consulting { margin-top: 1rem; }
+  .work-disclosure { margin-bottom: 1.15rem; }
+  .work-entry { grid-template-columns: minmax(0, 1fr); gap: 0.65rem; padding-block: 1.4rem; }
+  .work-entry h3 { max-width: none; }
+  .personal-and-practice { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+  .contact { margin-block: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a { transition: none; }
+}

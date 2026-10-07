@@ -1,0 +1,22 @@
+---
+import type { WorkEntry } from '../data/work';
+
+interface Props {
+  entry: WorkEntry;
+}
+const { entry } = Astro.props;
+---
+
+<article class="work-entry">
+  <h3>{entry.title}</h3>
+  <div class="work-note">
+    <p>{entry.description}</p>
+    <p class="work-area">{entry.area}</p>
+    {entry.draftNote && <p class="draft-note">{entry.draftNote}</p>}
+    {entry.links && entry.links.length > 0 && (
+      <ul class="work-links" role="list" aria-label={`Links for ${entry.title}`}>
+        {entry.links.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+      </ul>
+    )}
+  </div>
+</article>

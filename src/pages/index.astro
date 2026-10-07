@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkEntry from '../components/WorkEntry.astro';
+import { site } from '../data/site';
+import { work } from '../data/work';
+
+const hasDrafts = work.some((entry) => entry.draftNote);
+const year = new Date().getFullYear();
+---
+
+<BaseLayout>
+  <header class="page-width site-header" id="top">
+    <a class="site-name" href="#top">{site.name}</a>
+    <nav class="flex flex-wrap" aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#consulting">Consulting</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="page-width" tabindex="-1">
+    <section class="introduction" aria-labelledby="intro-title">
+      <h1 id="intro-title">{site.name}</h1>
+      <p class="intro-copy">
+        I work on machine learning, particularly computer vision and speech.
+        I’m interested in problems where understanding the data, running experiments,
+        and writing the software are all part of the research.
+      </p>
+      <p class="intro-consulting">
+        I take on selected consulting and technical work through {site.practice}.{' '}
+        <a href={`mailto:${site.email}`}>Get in touch</a>.
+      </p>
+    </section>
+
+    <section id="work" class="selected-work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected work</h2>
+      {hasDrafts && (
+        <p class="work-disclosure">
+          Draft entries based on my current research interests.
+          Specific projects, contributions, and public links are still to add.
+        </p>
+      )}
+      {work.length > 0 ? (
+        <div class="work-list">
+          {work.map((entry) => <WorkEntry entry={entry} />)}
+        </div>
+      ) : (
+        <div class="work-coming-soon">
+          <p>Coming soon. Project notes and public links will go here.</p>
+          <p>
+            My current interests include the relationship between speech acoustics
+            and vocal-tract geometry, how ML workloads use computation, and
+            software for reproducible experiments.
+          </p>
+        </div>
+      )}
+    </section>
+
+    <div class="personal-and-practice">
+      <section id="about" class="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>
+          I’m currently doing a PhD in AI and machine learning, working around
+          computer vision and speech.
+        </p>
+        <p>
+          My interests sit between models and the software around them: how data
+          is represented, how experiments are evaluated, and how computation is spent.
+          I like research questions that involve mathematical reasoning and building things.
+        </p>
+        <p>
+          I’m based in {site.location}. {site.practice} is the name I use for
+          my independent research and engineering practice.
+        </p>
+      </section>
+
+      <section id="consulting" class="consulting" aria-labelledby="consulting-title">
+        <h2 id="consulting-title">Things I can help with</h2>
+        <dl>
+          <div>
+            <dt>Research prototyping</dt>
+            <dd>Turning an uncertain research idea into something testable.</dd>
+          </div>
+          <div>
+            <dt>ML, vision, and speech engineering</dt>
+            <dd>Building or improving software around difficult model and data problems.</dd>
+          </div>
+          <div>
+            <dt>Technical investigation</dt>
+            <dd>Profiling, experiments, model evaluation, and implementation work.</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Have a difficult ML problem?</h2>
+      <p>
+        For selected technical work or research collaborations, write to{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="page-width site-footer flex flex-wrap justify-between">
+    <p>{site.name} · {site.practice}</p>
+    <p>© {year}</p>
+  </footer>
+</BaseLayout>

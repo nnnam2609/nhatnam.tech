@@ -2,7 +2,7 @@ export const site = {
   name: 'NhatNam Tech',
   founder: 'Nhat-Nam Nguyen',
   founded: '2026',
-  email: 'nam@nhatnam.tech',
+  email: 'contact@nhatnam.tech',
   location: 'Nancy, France',
   locality: 'Nancy',
   country: 'FR',

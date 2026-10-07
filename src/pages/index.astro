@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/Logo.astro';
 import { site } from '../data/site';
 
 const year = new Date().getFullYear();
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
 
 <BaseLayout>
   <header class="page-width site-header" id="top">
-    <a class="site-name" href="#top">{site.name}</a>
+    <a class="site-name" href="#top" aria-label={site.name}><Logo /></a>
     <nav class="flex flex-wrap" aria-label="Main navigation">
       <a href="#work">Work</a>
       <a href="#about">About</a>

@@ -28,7 +28,7 @@ Commit `package-lock.json` alongside `package.json`. The official Astro deployme
 - Self-hosted Inter; fonts and CSS are served from the same domain.
 - No client JavaScript, external runtime requests, analytics, cookies, backend, or contact form.
 - Keyboard focus states, a skip link, reduced-motion support, and a simple mobile navigation row.
-- Canonical and OpenGraph metadata, SVG favicon, `robots.txt`, and an automatically generated sitemap.
+- Canonical and OpenGraph metadata, SVG/ICO favicons, Apple touch icon, a 1200 × 630 sharing image, `robots.txt`, and an automatically generated sitemap.
 
 The supplied [Astro portfolio starter](https://github.com/BracoZS/astro-starter-portfolio) was inspected as a technical reference. Its lean Astro/Tailwind/strict-TypeScript approach fits this project; its multi-page portfolio, content collections, and dark-mode features do not. No template code or assets were copied. The page and design are original, based on the supplied studio brief.
 
@@ -40,10 +40,26 @@ The page leads with NhatNam Tech and its early-development research engineering 
 - `src/pages/index.astro`: studio introduction, development focus, research directions, About, consulting, and contact prose.
 - `src/layouts/BaseLayout.astro`: metadata, Organization JSON-LD, and document shell.
 - `src/styles/global.css`: design tokens, typography, and responsive layouts.
+- `src/components/Logo.astro` and `LogoMark.astro`: accessible inline SVG header lockup and reusable mark, inheriting CSS color.
+- `src/data/brand.ts`: original N/T mark geometry and asset palette.
+
+### Visual identity
+
+The geometric N/T symbol uses one filled path with a shared upright and four-unit strokes. It is original artwork, paired with the existing Inter typography. The warm paper, near-black ink, neutral rules, and deep blue accent are defined in CSS variables. The mark is 28px in the header; the hero keeps its typographic hierarchy.
+
+Public assets: `logo.svg` (horizontal), `logo-mark.svg` (symbol), `logo-monochrome.svg` (black/currentColor), and `logo-reversed.svg` (off-white for dark backgrounds). These SVGs are self-contained; the exported wordmarks use Inter glyph outlines. The inline components use real text for the wordmark. The SVG favicon adapts to the browser's light/dark preference, and the ICO and Apple icon use a solid blue background with a light mark.
+
+`og-image.svg` is the editable sharing-image master; `og-image.png` is served to social crawlers. Organization JSON-LD points to `/logo.svg`. Regenerate PNG/ICO exports after editing the SVG master or mark with Node.js 24:
+
+```sh
+node scripts/render-brand-assets.mjs
+```
+
+The exporter uses Sharp supplied by Astro; no additional project dependencies or client JavaScript are introduced. Keep generated assets committed so deployment does not require a separate rendering step. Inter's license is included in its font package.
 
 The tools are explicitly described as being in early development. The organization name, founding year, founder, development focus, and PhD statement come from the supplied brief. No customers, commercial launch, results, institutions, legal identifier, or street address are inferred. Organization JSON-LD uses the same identity fields as the visible page.
 
-The contact is `nam@nhatnam.tech` throughout.
+The contact is `contact@nhatnam.tech` throughout.
 
 Tailwind supplies small layout utilities. The copyright year is generated at build time; rebuild after the year changes.
 
@@ -86,7 +102,7 @@ Optional IPv6 support: add these four AAAA records with the Host field empty, al
 | AAAA | blank | `2606:50c0:8002::153` |
 | AAAA | blank | `2606:50c0:8003::153` |
 
-Replace conflicting apex web-hosting/parking A or AAAA records and conflicting `www` records. Preserve mail-related MX, SPF, DKIM, DMARC, and unrelated TXT records so `nam@nhatnam.tech` keeps working. Do not create an apex CNAME or wildcard record.
+Replace conflicting apex web-hosting/parking A or AAAA records and conflicting `www` records. Preserve mail-related MX, SPF, DKIM, DMARC, and unrelated TXT records so `contact@nhatnam.tech` keeps working. Do not create an apex CNAME or wildcard record.
 
 On Windows, you can inspect propagation with:
 

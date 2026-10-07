@@ -1,14 +1,17 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import { brand } from '../data/brand';
 
 const { title, description } = site;
 const canonical = new URL('/', Astro.site);
+const socialImage = new URL('/og-image.png', Astro.site);
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: site.name,
   url: canonical.href,
+  logo: new URL('/logo.svg', Astro.site).href,
   email: `mailto:${site.email}`,
   foundingDate: site.founded,
   founder: { '@type': 'Person', name: site.founder },
@@ -29,16 +32,25 @@ const organization = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f5f4ef" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <meta name="theme-color" content={brand.paper} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="NhatNam Tech — Independent AI research and engineering studio." />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="NhatNam Tech — Independent AI research and engineering studio." />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organization).replace(/</g, '\\u003c')} />
   </head>
   <body>

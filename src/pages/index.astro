@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WorkEntry from '../components/WorkEntry.astro';
 import { site } from '../data/site';
-import { work } from '../data/work';
 
-const hasDrafts = work.some((entry) => entry.draftNote);
 const year = new Date().getFullYear();
 ---
 
@@ -23,74 +20,92 @@ const year = new Date().getFullYear();
     <section class="introduction" aria-labelledby="intro-title">
       <h1 id="intro-title">{site.name}</h1>
       <p class="intro-copy">
-        I work on machine learning, particularly computer vision and speech.
-        I’m interested in problems where understanding the data, running experiments,
-        and writing the software are all part of the research.
+        Independent AI research and engineering studio.
+      </p>
+      <p class="intro-copy">
+        Building technical tools around machine learning, research workflows,
+        and AI-assisted software engineering.
+      </p>
+      <p class="studio-details">
+        Founded in {site.founded} by {site.founder} · {site.location}
       </p>
       <p class="intro-consulting">
-        I take on selected consulting and technical work through {site.practice}.{' '}
-        <a href={`mailto:${site.email}`}>Get in touch</a>.
+        <a href={`mailto:${site.email}`}>Get in touch</a>
       </p>
     </section>
 
     <section id="work" class="selected-work" aria-labelledby="work-title">
-      <h2 id="work-title">Selected work</h2>
-      {hasDrafts && (
-        <p class="work-disclosure">
-          Draft entries based on my current research interests.
-          Specific projects, contributions, and public links are still to add.
+      <h2 id="work-title">What we’re building</h2>
+      <div class="building-copy">
+        <p>
+          NhatNam Tech is developing tools for technical research and ML engineering
+          workflows, with an initial focus on code reasoning, experiment analysis,
+          and reproducible research automation.
         </p>
-      )}
-      {work.length > 0 ? (
-        <div class="work-list">
-          {work.map((entry) => <WorkEntry entry={entry} />)}
-        </div>
-      ) : (
-        <div class="work-coming-soon">
-          <p>Coming soon. Project notes and public links will go here.</p>
+        <article class="research-tools">
+          <h3>Research engineering tools</h3>
           <p>
-            My current interests include the relationship between speech acoustics
-            and vocal-tract geometry, how ML workloads use computation, and
-            software for reproducible experiments.
+            Early-stage tools that use modern language models to help inspect technical
+            codebases, reason about experiments, analyse results, and automate repetitive
+            research-engineering workflows.
           </p>
-        </div>
-      )}
+          <p class="development-status">Early development · 2026</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="research-directions" aria-labelledby="research-title">
+      <h2 id="research-title">Research directions</h2>
+      <p>Current areas of exploration include:</p>
+      <ul>
+        <li>Machine learning</li>
+        <li>Computer vision and scientific imaging</li>
+        <li>Speech and audio</li>
+        <li>Efficient ML systems</li>
+        <li>Reproducible experimentation</li>
+        <li>AI-assisted developer and research tooling</li>
+      </ul>
     </section>
 
     <div class="personal-and-practice">
       <section id="about" class="about" aria-labelledby="about-title">
         <h2 id="about-title">About</h2>
         <p>
-          I’m currently doing a PhD in AI and machine learning, working around
-          computer vision and speech.
+          NhatNam Tech is an independent AI research and engineering studio founded
+          in {site.founded} by {site.founder} in {site.location}.
         </p>
         <p>
-          My interests sit between models and the software around them: how data
-          is represented, how experiments are evaluated, and how computation is spent.
-          I like research questions that involve mathematical reasoning and building things.
+          The studio works at the intersection of machine learning research and systems
+          engineering, with particular interests in computer vision, speech processing,
+          efficient ML software, and tools for technical research.
         </p>
         <p>
-          I’m based in {site.location}. {site.practice} is the name I use for
-          my independent research and engineering practice.
+          Nhat-Nam is currently pursuing a PhD in AI and machine learning.
         </p>
       </section>
 
       <section id="consulting" class="consulting" aria-labelledby="consulting-title">
-        <h2 id="consulting-title">Things I can help with</h2>
+        <h2 id="consulting-title">Work with NhatNam Tech</h2>
+        <p>
+          I take on selected research collaborations, technical consulting, and
+          early-stage AI engineering work.
+        </p>
+        <p class="consulting-areas">Areas include:</p>
         <dl>
           <div>
             <dt>Research prototyping</dt>
-            <dd>Turning an uncertain research idea into something testable.</dd>
+            <dd>Turning uncertain technical ideas into testable systems.</dd>
           </div>
           <div>
             <dt>ML, vision, and speech engineering</dt>
-            <dd>Building or improving software around difficult model and data problems.</dd>
+            <dd>Building and improving software around difficult model and data problems.</dd>
           </div>
           <div>
             <dt>Technical investigation</dt>
-            <dd>Profiling, experiments, model evaluation, and implementation work.</dd>
+            <dd>Profiling, experimentation, model evaluation, and implementation work.</dd>
           </div>
         </dl>
+        <p class="consulting-contact"><a href={`mailto:${site.email}`}>{site.email}</a></p>
       </section>
     </div>
 
@@ -104,7 +119,11 @@ const year = new Date().getFullYear();
   </main>
 
   <footer class="page-width site-footer flex flex-wrap justify-between">
-    <p>{site.name} · {site.practice}</p>
-    <p>© {year}</p>
+    <div>
+      <p>{site.name}</p>
+      <p>Founded {site.founded} · {site.location}</p>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+    <p>© {year} {site.name}</p>
   </footer>
 </BaseLayout>

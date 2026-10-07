@@ -1,6 +1,6 @@
 # NhatNam Tech
 
-A single-page, static personal website for Nhat-Nam Nguyen, AI researcher and engineer, and his independent technical practice, NhatNam Tech, at [nhatnam.tech](https://nhatnam.tech).
+A single-page, static website for NhatNam Tech, an independent AI research and engineering studio founded in 2026 by Nhat-Nam Nguyen in Nancy, France, at [nhatnam.tech](https://nhatnam.tech).
 
 ## Local development
 
@@ -32,20 +32,18 @@ Commit `package-lock.json` alongside `package.json`. The official Astro deployme
 
 The supplied [Astro portfolio starter](https://github.com/BracoZS/astro-starter-portfolio) was inspected as a technical reference. Its lean Astro/Tailwind/strict-TypeScript approach fits this project; its multi-page portfolio, content collections, and dark-mode features do not. No template code or assets were copied. The page and design are original, based on the supplied studio brief.
 
-The page introduces Nhat-Nam personally and puts work before consulting. It uses normal reading text, underlined links, project notes, a factual About section, a compact consulting list, and a direct email contact. There are no section numbers, service cards, process diagram, display slogan, or CTA banner.
+The page leads with NhatNam Tech and its early-development research engineering tools. Research directions, a factual About section, selected consulting, and direct email contact follow. The existing minimal design, reading typography, underlined links, and responsive layouts are preserved.
 
 ### Editing content
 
-- `src/data/site.ts`: name, practice, email, location, and SEO copy.
-- `src/data/work.ts`: typed work entries and optional public paper/code links.
-- `src/pages/index.astro`: introduction, About, consulting, and contact prose.
-- `src/components/WorkEntry.astro`: project-note markup.
-- `src/layouts/BaseLayout.astro`: metadata and document shell.
+- `src/data/site.ts`: organization name, founder, founding year, email, location, and SEO copy.
+- `src/pages/index.astro`: studio introduction, development focus, research directions, About, consulting, and contact prose.
+- `src/layouts/BaseLayout.astro`: metadata, Organization JSON-LD, and document shell.
 - `src/styles/global.css`: design tokens, typography, and responsive layouts.
 
-**Selected work says “Coming soon,” as requested.** `src/data/work.ts` is intentionally empty, and the page shows the research interests as prose rather than completed projects. Add real entries with a title, specific description/contribution, research area, and optional `links` array when ready. The project-note layout automatically replaces the coming-soon text. If an entry is unfinished, give it a `draftNote`; the page will explicitly disclose draft entries. No publications, results, clients, or dates are invented.
+The tools are explicitly described as being in early development. The organization name, founding year, founder, development focus, and PhD statement come from the supplied brief. No customers, commercial launch, results, institutions, legal identifier, or street address are inferred. Organization JSON-LD uses the same identity fields as the visible page.
 
-The PhD statement comes from the supplied redesign brief. No institution or affiliation is inferred. The contact remains `nam@nhatnam.tech`, the previously confirmed address; the `hello@` address in the redesign brief was an illustrative example.
+The contact is `nam@nhatnam.tech` throughout.
 
 Tailwind supplies small layout utilities. The copyright year is generated at build time; rebuild after the year changes.
 

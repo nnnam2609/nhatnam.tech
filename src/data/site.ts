@@ -1,9 +1,12 @@
 export const site = {
-  name: 'Nhat-Nam Nguyen',
-  practice: 'NhatNam Tech',
+  name: 'NhatNam Tech',
+  founder: 'Nhat-Nam Nguyen',
+  founded: '2026',
   email: 'nam@nhatnam.tech',
   location: 'Nancy, France',
-  title: 'Nhat-Nam Nguyen — Machine Learning Research & Engineering',
+  locality: 'Nancy',
+  country: 'FR',
+  title: 'NhatNam Tech — AI Research & Engineering',
   description:
-    'Nhat-Nam Nguyen, AI researcher and engineer in Nancy, France. PhD research around computer vision and speech, and selected technical work through NhatNam Tech.',
+    'NhatNam Tech is an independent AI research and engineering studio building technical tools for machine learning, research workflows, and AI-assisted software engineering.',
 };
